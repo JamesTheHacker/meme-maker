@@ -1,0 +1,31 @@
+{
+  "name": "meme-maker",
+  "version": "1.0.0",
+  "description": "The easiest way to create meme images :)",
+  "main": "meme-maker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UndergroundLabs/meme-maker.git"
+  },
+  "keywords": [
+    "meme",
+    "meme",
+    "maker",
+    "meme",
+    "creator",
+    "meme",
+    "generator"
+  ],
+  "author": "James Jeffery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UndergroundLabs/meme-maker/issues"
+  },
+  "homepage": "https://github.com/UndergroundLabs/meme-maker#readme",
+  "dependencies": {
+    "gm": "^1.22.0"
+  }
+}
