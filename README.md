@@ -15,7 +15,7 @@ Install
 Usage
 -----
 
-Using [meme-maker]() is easy!
+Using Meme Maker is easy!
 
 ```
 let memeMaker = require('meme-maker');
