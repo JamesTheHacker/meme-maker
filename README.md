@@ -28,10 +28,10 @@ let options = {
 
 }
 
-let filename = meme(options);
+let filename = memeMaker(options);
 ```
 
-If successful `meme` returns the filename of the created meme (default: .png), otherwise an exception is thrown.
+If successful `memeMaker` returns the filename of the created meme (default: .png), otherwise an exception is thrown.
 
 Other options can also be overridden:
 
