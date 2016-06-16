@@ -21,10 +21,10 @@ Using Meme Maker is easy!
 let memeMaker = require('meme-maker');
 
 let options = {
-  topText: 'NEED AN ARK',
-  bottomText: 'I NOAH GUY',
-  image: noahs-ark.png',
-  outfile: 'noahs-ark-meme.png',
+  topText: 'TODAY IM',
+  bottomText: 'AN ASS',
+  image: 'spiderman.png',
+  outfile: 'spiderman-meme.png',
 
 }
 
