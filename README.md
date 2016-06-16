@@ -23,7 +23,7 @@ let memeMaker = require('meme-maker');
 let options = {
   topText: 'NEED AN ARK',
   bottomText: 'I NOAH GUY',
-  bgImage: noahs-ark.png',
+  image: noahs-ark.png',
   outfile: 'noahs-ark-meme.png',
 
 }
