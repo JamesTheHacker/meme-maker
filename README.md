@@ -1,7 +1,7 @@
 Meme Maker
 ==========
 
-**(Meme Maker)(https://www.npmjs.com/package/meme-maker)** is a package that allows you to quickly, and easily, generate memes such as the one below:
+**[Meme Maker](https://www.npmjs.com/package/meme-maker)** is a package that allows you to quickly, and easily, generate memes such as the one below:
 
 ![Example of meme created with Meme Maker](http://i.imgur.com/2s8NYvM.png)
 
