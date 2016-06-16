@@ -36,8 +36,8 @@ If successful `meme` returns the filename of the created meme (default: .png), o
 Other options can also be overridden:
 
 * font
-* font size
-* font fill
-* text position
-* stroke color
-* stroke weight
+* fontSize
+* fontFill
+* textPos
+* strokeColor
+* strokeWeight
