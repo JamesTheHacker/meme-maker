@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/UndergroundLabs/meme-maker#readme",
   "dependencies": {
-    "gm": "^1.22.0",
+    "gm": "^1.22.0"
   }
 }
