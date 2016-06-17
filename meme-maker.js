@@ -1,4 +1,4 @@
-let fs = require('fs');
+let fs = require('fs')
 let gm = require('gm')
 
 module.exports = function(options) {

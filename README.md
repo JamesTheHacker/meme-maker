@@ -25,13 +25,12 @@ let options = {
   bottomText: 'AN ASS',
   image: 'spiderman.png',
   outfile: 'spiderman-meme.png',
-
 }
 
 let filename = memeMaker(options);
 ```
 
-If successful `memeMaker` returns the filename of the created meme (default: .png), otherwise an exception is thrown.
+If successful `memeMaker` returns the filename of the created meme, otherwise an exception is thrown.
 
 Other options can also be overridden:
 
