@@ -3,7 +3,21 @@ let gm = require('gm')
 
 module.exports = function(options, callback) {
   fs.exists(options.image, (exists) => {
-    if(!exists) throw new Error('File does not exist: ' + options.image)
+
+    // If file does not exist return error
+    if(!exists) {
+      return callback(new Error('File does not exist: ' + options.image), null)
+    }
+
+    // Check to see if output file is set
+    if(!('outfile' in options)) {
+      return callback(new Error('options.outfile is required'), null);
+    }
+
+    // Check if topText or bottomText is set
+    if(!(('topText') in options) && !('bottomText') in options))) {
+      return callback(new Error('options.topText or options.bottomText is required'), null)
+    }
 
     // Create new graphicsmagick instance
     let img = gm(options.image)
@@ -30,8 +44,7 @@ module.exports = function(options, callback) {
          .drawText(0, TOP_POS, options.topText, TEXT_POS)
          .drawText(0, BOTTOM_POS, options.bottomText, TEXT_POS)
          .write(options.outfile, function(err) {
-           if (err) throw new Error('Failed to save meme: ' + err)
-           return callback(options.outfile);
+           if (err) return callback(new Error('Failed to save meme: ' + err), null)
          })
     })
   })

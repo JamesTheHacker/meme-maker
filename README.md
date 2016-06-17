@@ -18,13 +18,13 @@ Usage
 Using Meme Maker is easy!
 
 ```
-let meme-maker = require('meme-maker')
+let memeMaker = require('meme-maker')
 
 let options = {
   image: 'spiderman.png',         // Required
+  outfile: 'spiderman-meme.png',  // Required
   topText: 'TODAY IM',            // Required
   bottomText: 'AN ASS',           // Optional
-  outfile: 'spiderman-meme.png',  // Optional
   font: '/path/to/font.ttf',      // Optional
   fontSize: 50,                   // Optional
   fontFill: '#FFF',               // Optional
@@ -33,14 +33,15 @@ let options = {
   strokeWeight: 2                 // Optional
 }
 
-meme-maker(options, function(image) {
+memeMaker(options, function(err) {
+  if(e) throw new Error(err)
   console.log(image)
 });
 ```
 
-`meme-maker` accepts an options object as it's first paramater and a
-callback function as its second paramater. Upon success a string containing
-the newly created filename is returned.
+`memeMaker` accepts an options object as it's first paramater and a
+callback function as its second paramater. Upon success an image is created
+at the location specified in the `options.outfile` property.
 
 Default Values
 --------------
