@@ -1,6 +1,6 @@
 {
   "name": "meme-maker",
-  "version": "3.0.0",
+  "version": "2.0.1",
   "description": "The easiest way to create meme images :)",
   "main": "meme-maker.js",
   "scripts": {
