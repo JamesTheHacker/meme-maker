@@ -54,6 +54,7 @@ module.exports = function(options, callback) {
          .drawText(0, BOTTOM_POS, BOTTOM_TEXT, TEXT_POS)
          .write(options.outfile, function(err) {
            if (err) return callback(new Error('Failed to save meme: ' + err), null)
+           return callback(null)
          })
     })
   })
