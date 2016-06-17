@@ -18,7 +18,7 @@ Usage
 Using Meme Maker is easy!
 
 ```
-let memeMaker = require('meme-maker')
+let meme-maker = require('meme-maker')
 
 let options = {
   image: 'spiderman.png',         // Required
@@ -33,10 +33,14 @@ let options = {
   strokeWeight: 2                 // Optional
 }
 
-memeMaker(options, function(image) {
+meme-maker(options, function(image) {
   console.log(image)
 });
 ```
+
+`meme-maker` accepts an options object as it's first paramater and a
+callback function as its second paramater. Upon success a string containing
+the newly created filename is returned.
 
 Default Values
 --------------
