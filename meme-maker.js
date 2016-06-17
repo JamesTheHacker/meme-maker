@@ -1,9 +1,9 @@
 let fs = require('fs')
 let gm = require('gm')
 
-module.exports = function(options) {
+module.exports = function(options, callback) {
   fs.exists(options.image, (exists) => {
-    if(!exists) throw new Error('File does not exist: ' + options.image);
+    if(!exists) throw new Error('File does not exist: ' + options.image)
 
     // Create new graphicsmagick instance
     let img = gm(options.image)
@@ -31,7 +31,7 @@ module.exports = function(options) {
          .drawText(0, BOTTOM_POS, options.bottomText, TEXT_POS)
          .write(options.outfile, function(err) {
            if (err) throw new Error('Failed to save meme: ' + err)
-           return options.outfile;
+           return callback(options.outfile);
          })
     })
   })
