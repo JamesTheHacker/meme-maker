@@ -37,13 +37,14 @@ module.exports = function(options, callback) {
     const TEXT_POS = 'textPos' in options ? options.textPos : 'center'
     const STROKE_COLOR = 'strokeColor' in options ? options.strokeColor : '#000'
     const STROKE_WEIGHT = 'strokeWeight' in options ? options.strokeWeight : 2
+    const PADDING = 'padding' in options ? options.padding : 40
 
     // Get the image size to calculate top and bottom text positions
     img.size(function(err, dimensions) {
 
       // Set text position for top and bottom
-      const TOP_POS = Math.abs((dimensions.height / 2) - 40) * -1
-      const BOTTOM_POS = (dimensions.height / 2) - 40
+      const TOP_POS = Math.abs((dimensions.height / 2) - PADDING) * -1
+      const BOTTOM_POS = (dimensions.height / 2) - PADDING
 
       // Write text on image using graphicsmagick
       img.font(FONT, FONT_SIZE)
