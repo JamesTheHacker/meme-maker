@@ -1,5 +1,5 @@
-let fs = require('fs')
-let gm = require('gm')
+const gm = require('gm').subClass({imageMagick: true});
+const fs = require('fs')
 
 module.exports = function(options, callback) {
 
@@ -26,7 +26,7 @@ module.exports = function(options, callback) {
     }
 
     // Create new graphicsmagick instance
-    let img = gm(options.image)
+    const img = gm(options.image)
 
     // Set some defaults
     const TOP_TEXT = 'topText' in options ? options.topText : ''
@@ -41,7 +41,7 @@ module.exports = function(options, callback) {
 
     // Get the image size to calculate top and bottom text positions
     img.size(function(err, dimensions) {
-
+      
       // Set text position for top and bottom
       const TOP_POS = Math.abs((dimensions.height / 2) - PADDING) * -1
       const BOTTOM_POS = (dimensions.height / 2) - PADDING
