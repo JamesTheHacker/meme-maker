@@ -13,7 +13,6 @@ const options = {
   strokeWeight: 2                 // Optional
 }
 
-memeMaker(options, function(err) {
-  if(e) throw new Error(err)
+memeMaker(options).then(_ => {
   console.log('Image saved: ' + options.outfile)
-});
+}).catch(error => console.log(error));
