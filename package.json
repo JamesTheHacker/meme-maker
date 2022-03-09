@@ -18,10 +18,6 @@
   ],
   "author": "ErickWendel",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/UndergroundLabs/meme-maker/issues"
-  },
-  "homepage": "https://github.com/UndergroundLabs/meme-maker#readme",
   "dependencies": {
     "gm": "^1.22.0"
   }
