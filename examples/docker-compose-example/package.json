@@ -12,6 +12,6 @@
   "author": "erickwendel",
   "license": "ISC",
   "dependencies": {
-    "@erickwendel/meme-maker": "^2.3.0"
+    "@erickwendel/meme-maker": "^3.0.0"
   }
 }

@@ -1,4 +1,4 @@
-Meme Maker
+Meme Maker v3
 ==========
 
 This is a fork from **[Meme Maker](https://www.npmjs.com/package/meme-maker)**
@@ -20,7 +20,7 @@ Usage
 Using Meme Maker is easy!
 
 ```
-const memeMaker = require('../meme-maker')
+const memeMaker = require('@erickwendel/meme-maker')
 
 const options = {
   image: './spiderman.jpeg',         // Required

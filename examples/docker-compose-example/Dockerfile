@@ -1,7 +1,7 @@
 FROM node:17-slim as build
 
 RUN apt-get update \
-  && apt-get install -y build-essential graphicsmagick imagemagick
+  && apt-get install -y build-essential graphicsmagick
 
 WORKDIR /meme-maker/
 

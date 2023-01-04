@@ -1,7 +1,56 @@
-const gm = require('gm').subClass({ imageMagick: true });
 const { existsSync } = require('fs')
 const { promisify } = require('util')
+const { exec } = require('child_process')
+const shell = promisify(exec)
 
+function generateIdentifyCommand(imagePath) {
+  const value = `
+    gm identify \
+    -verbose \
+    ${imagePath}
+    `
+  const cmd = value.split('\n').join(' ')
+  return cmd
+}
+
+async function getImageSize(imagePath) {
+  const command = generateIdentifyCommand(imagePath)
+  const { stdout } = await shell(command)
+  const [line] = stdout.trim().split('\n').filter(text => ~text.indexOf('Geometry'))
+  const [width, height] = line.trim().replace('Geometry: ', "").split('x')
+  return {
+    width: Number(width),
+    height: Number(height)
+  }
+}
+
+async function generateConvertCommand(options) {
+  const value = `
+    gm convert
+    '${options.imagePath}'
+    -font '${options.font}'
+    -pointsize ${options.fontSize}
+    -fill '${options.fontFill}'
+    -stroke '${options.strokeColor}'
+    -strokewidth ${options.strokeWeight}
+    -draw 'gravity ${options.topText.position} text 0,${options.topText.top}  "${options.topText.text}"'
+    -draw 'gravity ${options.bottomText.position} text 0,${options.bottomText.bottom}  "${options.bottomText.text}"'
+    ${options.output}
+  `
+  const final = value.split('\n').join(' ')
+  const { stdout } = await shell(final)
+  return stdout
+}
+
+async function checkGmBinary() {
+  try {
+    await shell('gm version')
+  } catch (error) {
+    if(error.message.includes('command not found')) {
+      throw new Error('Gm binary is not present!')
+    }
+  }
+}
 const validate = options => {
   // Check if image option is set
   const messages = []
@@ -9,7 +58,7 @@ const validate = options => {
     messages.push('options.image is required')
   }
 
-  const exists = existsSync(options.image);
+  const exists = existsSync(options.image)
 
   // If file does not exist return error
   if (!exists) {
@@ -25,18 +74,15 @@ const validate = options => {
   if (!('topText' in options) && !('bottomText' in options)) {
     messages.push('options.topText or options.bottomText is required')
   }
-  if (!messages.length) return;
+  if (!messages.length) return
 
   throw new Error(`Validation error!: \n${messages.join('\n')}`)
 
 }
 
 module.exports = async function (options) {
-
+  await checkGmBinary()
   validate(options)
-
-  // Create new graphicsmagick instance
-  const img = gm(options.image)
 
   // Set some defaults
   const TOP_TEXT = 'topText' in options ? options.topText : ''
@@ -50,18 +96,31 @@ module.exports = async function (options) {
   const PADDING = 'padding' in options ? options.padding : 40
 
   // Get the image size to calculate top and bottom text positions
-  const dimensions = await promisify(img.size.bind(img))()
+  // const dimensions = await promisify(img.size.bind(img))()
+  const dimensions = await getImageSize(options.image)
 
   // Set text position for top and bottom
   const TOP_POS = Math.abs((dimensions.height / 2) - PADDING) * -1
   const BOTTOM_POS = (dimensions.height / 2) - PADDING
 
-  // Write text on image using graphicsmagick
-  const instance = img.font(FONT, FONT_SIZE)
-    .fill(FONT_FILL)
-    .stroke(STROKE_COLOR, STROKE_WEIGHT)
-    .drawText(0, TOP_POS, TOP_TEXT, TEXT_POS)
-    .drawText(0, BOTTOM_POS, BOTTOM_TEXT, TEXT_POS)
+  await generateConvertCommand({
+    imagePath: options.image,
+    font: FONT,
+    fontSize: FONT_SIZE,
+    fontFill: FONT_FILL,
+    strokeColor: STROKE_COLOR,
+    strokeWeight: STROKE_WEIGHT,
+    topText: {
+      text: TOP_TEXT,
+      position: TEXT_POS,
+      top: TOP_POS,
+    },
+    bottomText: {
+      text: BOTTOM_TEXT,
+      position: TEXT_POS,
+      bottom: BOTTOM_POS,
+    },
+    output: options.outfile
+  })
 
-  await promisify(instance.write.bind(instance))(options.outfile)
 }
