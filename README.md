@@ -19,7 +19,7 @@ Usage
 
 Using Meme Maker is easy!
 
-```
+```js
 const memeMaker = require('@erickwendel/meme-maker')
 
 const options = {
