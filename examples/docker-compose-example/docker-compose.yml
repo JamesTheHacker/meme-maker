@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  meme-maker:
+    image: meme-maker
+    build: .
+    volumes:
+      - .:/meme-maker
+      - node_modules:/meme-maker/node_modules
+
+volumes:
+  node_modules: {}

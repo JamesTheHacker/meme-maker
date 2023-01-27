@@ -1,6 +1,6 @@
 {
-  "name": "meme-maker",
-  "version": "2.1.2",
+  "name": "@erickwendel/meme-maker",
+  "version": "3.0.0",
   "description": "The easiest way to create meme images :)",
   "main": "meme-maker.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jamesthehacker/meme-maker.git"
+    "url": "https://github.com/ErickWendel/meme-maker.git"
   },
   "keywords": [
     "meme",
@@ -16,13 +16,6 @@
     "creator",
     "generator"
   ],
-  "author": "James Jeffery",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/UndergroundLabs/meme-maker/issues"
-  },
-  "homepage": "https://github.com/UndergroundLabs/meme-maker#readme",
-  "dependencies": {
-    "gm": "^1.22.0"
-  }
+  "author": "ErickWendel",
+  "license": "ISC"
 }
